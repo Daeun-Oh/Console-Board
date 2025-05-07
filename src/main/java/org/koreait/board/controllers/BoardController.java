@@ -22,7 +22,13 @@ public class BoardController extends Controller {
 
     @Override
     public void process(String command) {
-        System.out.println(command);
+        int menu = Integer.parseInt(command);
+
+        switch (menu) {
+            case 1:
+                Router.change(BoardWriteController.class);
+                break;
+        }
 
     }
 }

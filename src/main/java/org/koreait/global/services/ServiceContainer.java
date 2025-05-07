@@ -1,5 +1,6 @@
 package org.koreait.global.services;
 
+import org.koreait.board.services.BoardService;
 import org.koreait.member.services.MemberService;
 
 import java.lang.reflect.Method;
@@ -92,6 +93,7 @@ public class ServiceContainer {
             instance = new ServiceContainer();
 
             instance.register(MemberService.class);
+            instance.register(BoardService.class);
 
             instance.init();
         }
