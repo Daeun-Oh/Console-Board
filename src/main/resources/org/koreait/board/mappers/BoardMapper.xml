@@ -31,6 +31,12 @@
         SELECT * FROM BOARD WHERE id=#{id}
     </select>
 
+    <update id="updateBoard" parameterType="org.koreait.board.controllers.JoinForm">
+        UPDATE board
+        SET email = #{email}, name = #{name}, password = #{password}
+        WHERE id = #{id}
+    </update>
+
     <!--<update id="update">
         UPDATE BOARD
         <set>
