@@ -8,11 +8,11 @@ import org.koreait.member.entities.Member;
 import org.koreait.member.mappers.MemberMapper;
 import org.mindrot.jbcrypt.BCrypt;
 
-public class MemberUpdateService {
+public class BoardUpdateService {
     private MemberMapper mapper;
     private final Validator<JoinForm> validator;
 
-    public MemberUpdateService(MemberMapper mapper, Validator<JoinForm> validator) {
+    public BoardUpdateService(MemberMapper mapper, Validator<JoinForm> validator) {
         this.mapper = mapper;
         this.validator = validator;
     }

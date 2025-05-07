@@ -24,9 +24,9 @@ public class MemberService {
     }
 
     @Bean
-    public MemberJoinService joinService() {
+    public BoardCreateService joinService() {
 
-        return new MemberJoinService(memberMapper(), joinValidator());
+        return new BoardCreateService(memberMapper(), joinValidator());
     }
 
     @Bean
@@ -51,7 +51,7 @@ public class MemberService {
     }
 
     @Bean
-    public MemberUpdateService updateService() {
-        return new MemberUpdateService(memberMapper(), updateValidator());
+    public BoardUpdateService updateService() {
+        return new BoardUpdateService(memberMapper(), updateValidator());
     }
 }
