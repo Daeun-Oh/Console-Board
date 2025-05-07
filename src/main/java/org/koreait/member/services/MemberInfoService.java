@@ -25,6 +25,7 @@ public class MemberInfoService  {
      */
 
     public Member get(String email) {
+
         return mapper.get(email).orElseThrow(MemberNotFoundException::new);
     }
 
