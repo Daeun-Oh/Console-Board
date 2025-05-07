@@ -12,6 +12,7 @@ import org.koreait.member.validators.MemberUpdateValidator;
 @Configuration
 public class MemberService {
 
+    @Bean
     public MemberMapper memberMapper() {
         SqlSession session = DBConn.getInstance().getSession();
         return session.getMapper(MemberMapper.class);

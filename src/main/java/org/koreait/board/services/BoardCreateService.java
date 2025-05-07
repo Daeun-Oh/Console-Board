@@ -2,6 +2,8 @@ package org.koreait.board.services;
 
 import org.koreait.board.controllers.CreateForm;
 import org.koreait.board.mappers.BoardMapper;
+import org.koreait.board.entities.Board;
+import org.koreait.global.configs.DBConn;
 import org.koreait.global.validators.Validator;
 
 /**
@@ -55,4 +57,7 @@ public class BoardCreateService {
         // mybatis는 생성된 mapper 조회 결과를 캐싱하므로 이를 갱신 해야 함
         mapper = DBConn.getInstance().getSession().getMapper(MemberMapper.class);*/
     }
+
+
+
 }
