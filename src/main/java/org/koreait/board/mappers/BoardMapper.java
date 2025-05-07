@@ -1,5 +1,6 @@
 package org.koreait.board.mappers;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Select;
 import org.koreait.board.entities.Board;
 import org.koreait.global.paging.SearchForm;
@@ -20,4 +21,8 @@ public interface BoardMapper {
 
     // 게시글 정보 수정
     int update(Board board);
+
+    @Delete("DELETE FROM BOARD WHERE id=#{id}")
+    boolean deleteBoard(long id);
+
 }

@@ -53,4 +53,10 @@ public class BoardService {
     public BoardCreateService1 boardCreateService1() {
         return new BoardCreateService1(boardMapper(), createValidator());
     }
+
+    @Bean
+    public BoardDeleteService boardDeleteService() {
+        return new BoardDeleteService(boardMapper());
+    }
+
 }

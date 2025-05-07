@@ -64,18 +64,6 @@ public class BoardReadController extends Controller {
             // 조회 후 다시 Board
             Router.change(BoardController.class);
         });
-
-
-
-
-
-
-
-        /*for (Board board : boardList) {
-            if (board.getId() == boardId) {
-
-            }
-        }*/
     }
 
     @Override
