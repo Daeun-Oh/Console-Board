@@ -1,6 +1,8 @@
 package org.koreait.global.configs;
 
 import org.koreait.board.controllers.BoardController;
+import org.koreait.board.controllers.BoardWriteController;
+import org.koreait.board.services.BoardCreateService;
 import org.koreait.global.services.ServiceContainer;
 import org.koreait.main.controllers.MainController;
 import org.koreait.member.controllers.*;
@@ -66,5 +68,10 @@ public class ControllerConfig {
      */
     public BoardController boardController() {
         return new BoardController();
+    }
+
+    public BoardWriteController boardWriteController() {
+        BoardCreateService service = ServiceContainer.getBean(BoardCreateService.class);
+        return new BoardWriteController(service);
     }
 }
