@@ -1,11 +1,14 @@
 package org.koreait.global.configs;
 
 import org.koreait.board.controllers.BoardController;
+import org.koreait.board.controllers.BoardReadController;
 import org.koreait.board.controllers.BoardWriteController;
 import org.koreait.board.services.BoardCreateService;
+import org.koreait.board.services.BoardReadService;
 import org.koreait.global.services.ServiceContainer;
 import org.koreait.main.controllers.MainController;
 import org.koreait.member.controllers.*;
+import org.koreait.member.services.MemberInfoService;
 import org.koreait.member.services.MemberJoinService;
 import org.koreait.member.services.MemberLoginService;
 import org.koreait.member.services.MemberUpdateService;
@@ -73,5 +76,11 @@ public class ControllerConfig {
     public BoardWriteController boardWriteController() {
         BoardCreateService service = ServiceContainer.getBean(BoardCreateService.class);
         return new BoardWriteController(service);
+    }
+
+    public BoardReadController boardReadController() {
+        BoardReadService service = ServiceContainer.getBean(BoardReadService.class);
+        MemberInfoService infoService = ServiceContainer.getBean(MemberInfoService.class)
+        return new BoardReadController(service, infoService);
     }
 }
