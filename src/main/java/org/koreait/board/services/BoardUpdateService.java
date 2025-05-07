@@ -1,20 +1,25 @@
-package org.koreait.board.services;
+package org.koreait.B.services;
 
-import org.koreait.board.controllers.CreateForm;
-import org.koreait.board.mappers.BoardMapper;
+import org.koreait.board.entities.Board;
+import org.koreait.global.configs.DBConn;
 import org.koreait.global.validators.Validator;
+import org.koreait.member.MemberSession;
+import org.koreait.member.controllers.JoinForm;
+import org.koreait.member.entities.Member;
+import org.koreait.member.mappers.MemberMapper;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class BoardUpdateService {
-    private BoardMapper mapper;
-    private final Validator<CreateForm> validator;
+    private MemberMapper mapper;
+    private final Validator<JoinForm> validator;
 
-    public BoardUpdateService(BoardMapper mapper, Validator<CreateForm> validator) {
+    public BoardUpdateService(MemberMapper mapper, Validator<JoinForm> validator) {
         this.mapper = mapper;
         this.validator = validator;
     }
 
-    public void process(CreateForm form) {
-        /*// 회원정보 수정 유효성 검사
+    public void process(JoinForm form) {
+        // 회원정보 수정 유효성 검사
         validator.check(form);
         Member member = new Member();
         member.setEmail(MemberSession.getMember().getEmail());
@@ -40,6 +45,6 @@ public class BoardUpdateService {
 
         // 로그인한 회원 정보도 갱신한다.
         member = mapper.get(member.getEmail()).orElse(null);
-        MemberSession.setMember(member);*/
+        MemberSession.setMember(member);
     }
 }
