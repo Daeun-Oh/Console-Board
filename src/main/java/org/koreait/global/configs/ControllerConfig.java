@@ -6,6 +6,7 @@ import org.koreait.board.controllers.BoardWriteController;
 import org.koreait.board.services.BoardCreateService;
 import org.koreait.board.services.BoardReadService;
 import org.koreait.global.services.ServiceContainer;
+import org.koreait.global.validators.IdValidator;
 import org.koreait.main.controllers.MainController;
 import org.koreait.member.controllers.*;
 import org.koreait.member.services.MemberInfoService;
@@ -80,7 +81,7 @@ public class ControllerConfig {
 
     public BoardReadController boardReadController() {
         BoardReadService service = ServiceContainer.getBean(BoardReadService.class);
-        MemberInfoService infoService = ServiceContainer.getBean(MemberInfoService.class)
+        MemberInfoService infoService = ServiceContainer.getBean(MemberInfoService.class);
         return new BoardReadController(service, infoService);
     }
 }
