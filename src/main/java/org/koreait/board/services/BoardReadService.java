@@ -4,13 +4,14 @@ import org.koreait.board.entities.Board;
 import org.koreait.board.exceptions.BoardNotFoundException;
 import org.koreait.board.mappers.BoardMapper;
 import org.koreait.board.validators.BoardIdValidator;
+import org.koreait.global.configs.DBConn;
 import org.koreait.global.paging.SearchForm;
 
 import java.util.List;
 
 public class BoardReadService {
 
-    private final BoardMapper mapper;
+    private BoardMapper mapper;
     private final BoardIdValidator validator;
 
 
@@ -45,14 +46,15 @@ public class BoardReadService {
         search.setOffset(offset);
         search.setPage(page);
         search.setLimit(limit);
-
-       return mapper.getList(search);
+        mapper = DBConn.getInstance().getSession().getMapper(BoardMapper.class);
+        return mapper.getList(search);
     }
 
     /**
      * 게시글 목록 모두 조회
      */
     public List<Board> getAllList() {
+        mapper = DBConn.getInstance().getSession().getMapper(BoardMapper.class);
         return mapper.getAllBoards();
     }
 

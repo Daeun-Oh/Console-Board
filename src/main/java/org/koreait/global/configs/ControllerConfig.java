@@ -2,8 +2,8 @@ package org.koreait.global.configs;
 
 import org.koreait.board.controllers.*;
 import org.koreait.board.services.BoardCreateService1;
-import org.koreait.board.services.BoardDeleteService;
 import org.koreait.board.services.BoardReadService;
+import org.koreait.board.services.BoardUpdateServiceConfirm;
 import org.koreait.global.services.ServiceContainer;
 import org.koreait.main.controllers.MainController;
 import org.koreait.member.controllers.*;
@@ -87,9 +87,9 @@ public class ControllerConfig {
         return new BoardListController();
     }
 
-    public BoardDeleteController boardDeleteController() {
-        BoardDeleteService deleteService = ServiceContainer.getBean(BoardDeleteService.class);
-        BoardReadService readService = ServiceContainer.getBean(BoardReadService.class);
-        return new BoardDeleteController(deleteService, readService);
+    public BoardUpdateController boardUpdateController() {
+        BoardReadService service = ServiceContainer.getBean(BoardReadService.class);
+        BoardUpdateServiceConfirm updateService = ServiceContainer.getBean(BoardUpdateServiceConfirm.class);
+        return new BoardUpdateController(service, updateService);
     }
 }

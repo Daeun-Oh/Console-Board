@@ -24,7 +24,6 @@ public class BoardCreateService1 {
         board.setWriterId(m.getSeq());
         board.setTitle(form.getTitle());
         board.setContent(form.getContent());
-        board.setWriterId(form.getWriterId());
         String Title = form.getTitle();
         try {
             if(Title == null && form.getTitle().isBlank()){

@@ -37,21 +37,18 @@
         WHERE id = #{id}
     </update>-->
 
-    <!--<update id="update">
+    <update id="update">
         UPDATE BOARD
         <set>
-            <if test="name != null">
-                name = #{name},
+            <if test="title != null">
+                title = #{title},
             </if>
-            <if test="mobile != null">
-                mobile = #{mobile},
-            </if>
-            <if test="password != null">
-                password = #{password},
+            <if test="content != null">
+                content = #{content},
             </if>
         </set>
         <where>
-            email = #{email}
+            id = #{id}
         </where>
-    </update>-->
+    </update>
 </mapper>

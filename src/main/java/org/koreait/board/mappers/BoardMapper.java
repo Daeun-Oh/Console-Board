@@ -1,6 +1,8 @@
 package org.koreait.board.mappers;
 
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.koreait.board.entities.Board;
 import org.koreait.global.paging.SearchForm;
@@ -13,7 +15,12 @@ public interface BoardMapper {
     List<Board> getList(SearchForm search);
     Optional<Board> get(int id);
 
-    @Select("SELECT * FROM BOARD")
+    @Select("SELECT id, title, content, writer_id, created_at, modified_at FROM BOARD")
+    @Results({
+            @Result(property = "writerId", column = "writer_id"),
+            @Result(property = "createdAt", column = "created_at"),
+            @Result(property = "modifiedAt", column = "modified_at")
+    })
     List<Board> getAllBoards();
 
     @Select("SELECT COUNT(*) FROM BOARD WHERE id=#{id}")
