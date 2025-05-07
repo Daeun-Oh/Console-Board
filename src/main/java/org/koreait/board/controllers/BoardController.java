@@ -9,7 +9,7 @@ import java.util.List;
 
 public class BoardController extends Controller {
     public BoardController() {
-        setMenus(List.of("1","2","3","4"));
+        setMenus(List.of("1", "2", "3", "4"));
     }
 
 

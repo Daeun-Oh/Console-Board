@@ -34,13 +34,15 @@ public class BoardReadController extends Controller {
 
                     int boardId = Integer.parseInt(boardIdS);
 
+                    /* 검색한 게시글 찾기 S*/
                     List<Board> boardList = readService.getAllList();
 
-                    // 검색한 게시글 찾기
                     Optional<Board> optionalBoard = boardList.stream()
                             .filter(b -> b.getId() == boardId)
                             .findFirst();
+
                     Board selectedBoard = optionalBoard.orElse(null);
+                    /* 검색한 게시글 찾기 E*/
 
                     try {
                         StringBuffer sb = new StringBuffer(5000);
