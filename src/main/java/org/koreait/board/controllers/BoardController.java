@@ -11,6 +11,7 @@ import static org.koreait.member.MemberSession.isAdmin;
 
 public class BoardController extends Controller {
     public BoardController() {
+
         setMenus(List.of("1", "2"));
     }
     @Override

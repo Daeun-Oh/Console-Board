@@ -4,10 +4,8 @@ import org.koreait.board.controllers.BoardController;
 import org.koreait.board.controllers.BoardListController;
 import org.koreait.board.controllers.BoardReadController;
 import org.koreait.board.controllers.BoardCreateController;
-import org.koreait.board.services.BoardCreateService;
 import org.koreait.board.services.BoardReadService;
 import org.koreait.global.services.ServiceContainer;
-import org.koreait.global.validators.IdValidator;
 import org.koreait.main.controllers.MainController;
 import org.koreait.member.controllers.*;
 import org.koreait.member.services.MemberInfoService;
@@ -87,6 +85,10 @@ public class ControllerConfig {
     }
 
     public BoardListController boardListController() {
+
+        return new BoardListController();
+    }
+    public BoardListController getList(){
         return new BoardListController();
     }
 }

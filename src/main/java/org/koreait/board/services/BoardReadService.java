@@ -25,6 +25,7 @@ public class BoardReadService {
      */
 
     public Board get(int id) {
+
         return mapper.get(id).orElseThrow(BoardNotFoundException::new);
     }
 

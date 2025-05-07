@@ -1,37 +1,35 @@
 package org.koreait.board.services;
 
 
-import lombok.Data;
-import org.koreait.board.controllers.RequestBoard;
+import org.koreait.board.controllers.CreateForm;
 import org.koreait.board.entities.Board;
 import org.koreait.board.mappers.BoardMapper;
 import org.koreait.member.MemberSession;
 import org.koreait.member.entities.Member;
 import org.koreait.global.validators.Validator;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class BoardCreateService1 {
-    private final Validator<RequestBoard> validator;
+    private final Validator<CreateForm> validator;
+    private final BoardMapper mapper;
 
-
-    public BoardCreateService1(BoardMapper mapper, Validator<RequestBoard> validator) {
+    public BoardCreateService1(BoardMapper mapper, Validator<CreateForm> validator) {
         this.validator = validator;
+        this.mapper = mapper;
+
+
+
 
     }
 
-    public void save(RequestBoard form){
+    public void save(CreateForm form){
         Board board = new Board();
         Member m = MemberSession.getMember();
         board.setWriterId(m.getSeq());
         board.setTitle(form.getTitle());
-        board.setWriterId(form.getWriter_id());
+        board.setWriterId(form.getWriterId());
         String Title = form.getTitle();
         try {
-            if(Title == null && form.getTitle().isBlank()){
+            if(Title == null){
                 String message  = form.getTitle();
                 message ="작성 해주세요";
                 System.out.println(message);
@@ -40,6 +38,8 @@ public class BoardCreateService1 {
             throw new RuntimeException(e);
         }
     }
+
+
 
 
 
