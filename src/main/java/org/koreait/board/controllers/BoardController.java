@@ -36,7 +36,7 @@ public class BoardController extends Controller {
 
         switch (menu) {
             case 1:
-                Router.change(BoardWriteController.class);
+                Router.change(BoardCreateController.class);
                 break;
             case 2:
                 Router.change(BoardReadController.class);
