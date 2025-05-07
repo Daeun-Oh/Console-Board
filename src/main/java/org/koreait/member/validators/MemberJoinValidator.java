@@ -49,6 +49,9 @@ public class MemberJoinValidator implements Validator<JoinForm>, RequiredFieldVa
         // 4. 비밀번호는 8자리 이상 체크
         checkTrue(password.length() >= 8, "비밀번호는 8자리 이상 입력하세요.");
 
+        // 비밀번호 확인 체크
+        checkTrue(password.equals(confirmPassword), "비밀번호 확인이 틀렸습니다.");
+
         // 5. 휴대전화번호 형식 체크
         checkTrue(checkMobile(mobile), "휴대전화번호 형식이 아닙니다.");
     }
