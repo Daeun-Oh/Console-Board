@@ -7,12 +7,12 @@ import org.koreait.global.paging.SearchForm;
 
 import java.util.List;
 
-public class BoardInfoService  {
+public class BoardReadService {
 
     private final BoardMapper mapper;
 
 
-    public BoardInfoService(BoardMapper mapper) {
+    public BoardReadService(BoardMapper mapper) {
         this.mapper = mapper;
     }
 
@@ -45,4 +45,5 @@ public class BoardInfoService  {
 
        return mapper.getList(search);
     }
+
 }

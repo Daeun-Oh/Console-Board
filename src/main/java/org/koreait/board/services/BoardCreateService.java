@@ -11,7 +11,7 @@ import org.mindrot.jbcrypt.BCrypt;
  * 회원 가입 기능
  *
  */
-public class MemberJoinService {
+public class BoardCreateService {
     private MemberMapper mapper;
     private final Validator<JoinForm> validator;  // 유효성 검사를 위한 Validator
 
@@ -21,7 +21,7 @@ public class MemberJoinService {
      * @param mapper
      * @param validator
      */
-    public MemberJoinService(MemberMapper mapper, Validator<JoinForm> validator) {
+    public BoardCreateService(MemberMapper mapper, Validator<JoinForm> validator) {
         this.mapper = mapper;
         this.validator = validator;
     }
