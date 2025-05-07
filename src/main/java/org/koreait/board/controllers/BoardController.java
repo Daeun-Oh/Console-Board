@@ -7,12 +7,12 @@ import org.koreait.member.controllers.MemberLoginController;
 
 import java.util.List;
 
-import static org.koreait.member.MemberSession.isAdmin;
-
 public class BoardController extends Controller {
     public BoardController() {
         setMenus(List.of("1", "2"));
     }
+
+
     @Override
     public void show() {
         // 로그인 상태가 아니라면 메인 페이지로 이동
@@ -22,11 +22,10 @@ public class BoardController extends Controller {
             return;
         }
 
-        setMenus(isAdmin() ? List.of("1", "2", "3") : List.of("1", "2"));
-
         StringBuffer sb = new StringBuffer(5000);
         sb.append("1. 작성\n")
-                .append("2. 전체 조회");
+                .append("2. 조회\n")
+                .append("3. 수정");
         System.out.println(sb);
     }
 

@@ -2,22 +2,80 @@ package org.koreait.board.controllers;
 
 import org.koreait.board.entities.Board;
 import org.koreait.board.services.BoardReadService;
-import org.koreait.global.paging.SearchForm;
+import org.koreait.global.exceptions.CommonException;
 import org.koreait.global.router.Controller;
-import org.koreait.global.validators.IdValidator;
+import org.koreait.global.router.Router;
 import org.koreait.member.services.MemberInfoService;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class BoardReadController extends Controller {
     private final BoardReadService readService;
     private final MemberInfoService infoService;
-    private IdValidator validator;
 
     public BoardReadController(BoardReadService readService, MemberInfoService infoService) {
         this.readService = readService;
         this.infoService = infoService;
+
+        setPrompt(() -> {
+            while (true) {
+                try {
+                    Scanner sc = new Scanner(System.in);
+
+                    String boardIdS = inputEach("검색할 게시글 번호", sc);
+
+                    if (!boardIdS.matches("\\d+")) {
+                        System.out.println("숫자를 입력해주세요.");
+                        Router.change(BoardController.class);
+                        return;
+                    }
+
+                    int boardId = Integer.parseInt(boardIdS);
+
+                    List<Board> boardList = readService.getAllList();
+
+                    // 검색한 게시글 찾기
+                    Optional<Board> optionalBoard = boardList.stream()
+                            .filter(b -> b.getId() == boardId)
+                            .findFirst();
+                    Board selectedBoard = optionalBoard.orElse(null);
+
+                    try {
+                        StringBuffer sb = new StringBuffer(5000);
+                        sb.append("-----[게시물 #" + selectedBoard.getId() + "]-----\n")
+                                .append("작성자: " + selectedBoard.getWriterId() + "\n")
+                                .append("제목: " + selectedBoard.getTitle() + "\n")
+                                .append("내용: " + selectedBoard.getContent());
+                        System.out.println(sb);
+                    } catch (CommonException e) {
+                        printError(e);
+                    }
+
+
+
+                    break;
+                } catch (CommonException e) {
+                    printError(e);
+                }
+            }
+
+            // 조회 후 다시 Board
+            Router.change(BoardController.class);
+        });
+
+
+
+
+
+
+
+        /*for (Board board : boardList) {
+            if (board.getId() == boardId) {
+
+            }
+        }*/
     }
 
     @Override
@@ -29,30 +87,27 @@ public class BoardReadController extends Controller {
     public void show() {
 
 
-        CreateForm form = new CreateForm();
+        /*CreateForm form = new CreateForm();
         setPrompt(() -> {
             Scanner sc = new Scanner(System.in);
             String searchId = inputEach("게시글 번호", sc);
-            int id = validator.stringToId(searchId);
+            // 숫자인지 확인
+            if (searchId.matches("\\d+")) {
+                int postId = Integer.parseInt(searchId);
+            } else {
+
+            }
             form.setWriterId(id);
         });
 
-        SearchForm sForm = new SearchForm();
-        sForm.setSkey("내용");
-        List<Board> boardList = readService.getList(sForm);
 
-        for (Board board : boardList) {
-            if (board.getId() == form.getWriterId()) {
-                StringBuffer sb = new StringBuffer(5000);
-                sb.append("-----[게시물 #" + board.getId() + "]-----\n")
-                        .append("작성자: " + board.getWriterId() + "\n")
-                        .append("제목: " + board.getTitle() + "\n")
-                        .append("내용: " + board.getContent());
-                System.out.println(sb);
-            }
-        }
 
-        System.out.println(boardList);
+        System.out.println(boardList);*/
+
+    }
+
+    @Override
+    public void process(String command) {
 
     }
 }

@@ -74,7 +74,6 @@ public abstract class Controller {
      */
     public final void run() {
         common();
-        System.out.println("커먼!");
         show();
         prompt();
     }

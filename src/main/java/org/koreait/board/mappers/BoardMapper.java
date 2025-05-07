@@ -12,6 +12,9 @@ public interface BoardMapper {
     List<Board> getList(SearchForm search);
     Optional<Board> get(int id);
 
+    @Select("SELECT * FROM BOARD")
+    List<Board> getAllBoards();
+
     @Select("SELECT COUNT(*) FROM BOARD WHERE id=#{id}")
     int exists(long id);
 
