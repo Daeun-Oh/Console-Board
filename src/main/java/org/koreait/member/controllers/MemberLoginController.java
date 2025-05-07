@@ -3,6 +3,7 @@ package org.koreait.member.controllers;
 import org.koreait.global.exceptions.CommonException;
 import org.koreait.global.router.Controller;
 import org.koreait.global.router.Router;
+import org.koreait.main.controllers.MainController;
 import org.koreait.member.services.MemberLoginService;
 
 import java.util.Scanner;
@@ -39,8 +40,8 @@ public class MemberLoginController extends Controller {
                 }
             }
 
-            // 로그인 완료 후 회원관리 메인 메뉴 이동
-            Router.change(MemberController.class);
+            // 로그인 완료 후 메인 메뉴 이동
+            Router.change(MainController.class);
         });
     }
 
