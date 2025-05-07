@@ -12,7 +12,7 @@ public interface MemberMapper {
     List<Member> getList(SearchForm search);
     Optional<Member> get(String email);
 
-    @Select("SELECT COUNT(*) FROM member WHERE email=#{email}")
+    @Select("SELECT COUNT(*) FROM MEMBER WHERE email=#{email}")
     int exists( String email);
 
     // 회원정보 수정
