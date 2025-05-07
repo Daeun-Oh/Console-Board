@@ -4,6 +4,7 @@ import org.koreait.global.validators.Validator;
 import org.koreait.member.MemberSession;
 import org.koreait.member.controllers.LoginForm;
 import org.koreait.member.entities.Member;
+import org.koreait.member.services.MemberInfoService;
 
 /**
  * 로그인 처리 서비스

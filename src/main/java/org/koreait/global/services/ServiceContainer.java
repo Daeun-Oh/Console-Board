@@ -55,7 +55,6 @@ public class ServiceContainer {
                     if (method.getAnnotation(Bean.class) == null) {
                         continue;
                     }
-
                     // 동적 메서드 호출하여 컨테이너가 관리할 객체 생성
                     Object bean = method.invoke(obj);
 
