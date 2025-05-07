@@ -16,7 +16,7 @@ public class BoardMapperTest {
     }
 
     @Test
-    void test1() {
+    void test1() { //테스트
         SqlSession session = dbConn.getSession();
         BoardMapper mapper = session.getMapper(BoardMapper.class);
         Board board = new Board();
