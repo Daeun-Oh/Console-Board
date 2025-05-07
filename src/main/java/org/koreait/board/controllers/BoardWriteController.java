@@ -18,10 +18,11 @@ public class BoardWriteController extends Controller {
         Scanner sc = new Scanner(System.in);
         CreateForm form = new CreateForm();
         // 로그인한 회원 번호로 작성자 번호 완성
-        Member member = MemberSession.getMember();
-        form.setWriterId(member.getSeq());
+
         setPrompt(() -> {
-            while(true) {
+            Member member = MemberSession.getMember();
+            form.setWriterId(member.getSeq());
+            while (true) {
                 try {
                     String subject = inputEach("1. 제목", sc);
                 } catch (CommonException e) {
@@ -29,6 +30,7 @@ public class BoardWriteController extends Controller {
                 }
             }
         });
+
     }
 
     @Override
