@@ -1,6 +1,5 @@
 package org.koreait.board.controllers;
 
-import org.koreait.board.controllers.BoardListController;
 import org.koreait.board.entities.Board;
 import org.koreait.board.services.BoardDeleteService;
 import org.koreait.board.services.BoardReadService;
@@ -14,8 +13,8 @@ import java.util.Scanner;
 
 public class BoardDeleteController extends Controller {
 
-    private BoardReadService readService;
-    private BoardDeleteService deleteService;
+    private final BoardReadService readService;
+    private final BoardDeleteService deleteService;
 
     public BoardDeleteController (BoardDeleteService deleteService, BoardReadService readService) {
         this.deleteService = deleteService;

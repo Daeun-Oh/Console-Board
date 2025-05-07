@@ -51,8 +51,9 @@ public class BoardReadController extends Controller {
                                 .append("제목: " + selectedBoard.getTitle() + "\n")
                                 .append("내용: " + selectedBoard.getContent());
                         System.out.println(sb);
-                    } catch (CommonException e) {
-                        printError(e);
+                    } catch (NullPointerException e) {
+                        e.printStackTrace();
+                        System.out.println("Error: 존재하지 않는 게시글입니다.");
                     }
 
 
