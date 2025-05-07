@@ -46,6 +46,7 @@ public class MemberJoinController extends Controller {
                     form.setTerms(agree.equals("1"));
 
                     service.process(form); // 회원가입 처리
+                    System.out.println("회원가입 처리가 되었다!");
                     break;
                 } catch (CommonException e) {
                     printError(e);

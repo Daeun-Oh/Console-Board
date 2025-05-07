@@ -1,6 +1,6 @@
 package org.koreait.board.controllers;
 
-import org.koreait.board.services.BoardCreateService;
+import org.koreait.board.services.BoardCreateService1;
 import org.koreait.global.exceptions.CommonException;
 import org.koreait.global.router.Controller;
 import org.koreait.global.router.Router;
@@ -11,9 +11,9 @@ import java.util.Scanner;
 
 public class BoardCreateController extends Controller {
 
-    private final BoardCreateService service;
+    private final BoardCreateService1 service;
 
-    public BoardCreateController(BoardCreateService service) {
+    public BoardCreateController(BoardCreateService1 service) {
         this.service = service;
 
         Scanner sc = new Scanner(System.in);
@@ -31,7 +31,8 @@ public class BoardCreateController extends Controller {
                     String content = inputEach("2. 내용", sc);
                     form.setContent(content);
 
-                    service.process(form);
+                    // service.process(form);
+                    service.save(form);
                     break;
                 } catch (CommonException e) {
                     printError(e);

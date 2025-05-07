@@ -2,6 +2,7 @@ package org.koreait.board;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.koreait.board.controllers.CreateForm;
 import org.koreait.board.services.BoardUpdateServiceConfirm;
 import org.koreait.global.paging.SearchForm;
 import org.koreait.global.validators.Validator;
@@ -17,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BoardUpdateServiceConfirmTest {
 
     private MemberMapper memberMapper;
-    private Validator<JoinForm> validator;
+    private Validator<CreateForm> validator;
     private BoardUpdateServiceConfirm service;
 
     @BeforeEach
@@ -51,7 +52,7 @@ class BoardUpdateServiceConfirmTest {
         }; // 실제 구현이 필요
         validator = new Validator<>() {
             @Override
-            public void check(JoinForm form) {
+            public void check(CreateForm form) {
 
             }
         }; // 실제 구현이 필요
@@ -60,8 +61,8 @@ class BoardUpdateServiceConfirmTest {
 
     @Test
     void testProcess_WithValidForm() {
-        JoinForm form = new JoinForm();
-        form.setEmail("test@example.com");
+        CreateForm form = new CreateForm();
+        //form.setEmail("test@example.com");
 
         assertDoesNotThrow(() -> service.process(form));
     }

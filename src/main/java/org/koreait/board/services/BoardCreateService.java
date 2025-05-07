@@ -2,8 +2,6 @@ package org.koreait.board.services;
 
 import org.koreait.board.controllers.CreateForm;
 import org.koreait.board.mappers.BoardMapper;
-import org.koreait.board.entities.Board;
-import org.koreait.global.configs.DBConn;
 import org.koreait.global.validators.Validator;
 
 /**
@@ -30,10 +28,10 @@ public class BoardCreateService {
      *
      */
     public void process(CreateForm form) {
-        // 회원 가입 데이터 유효성 검사
+        /*// 회원 가입 데이터 유효성 검사
         validator.check(form);
 
-        /*// 유효성 검사 통과했다면 DB 처리 S
+        // 유효성 검사 통과했다면 DB 처리 S
         // 휴대전화번호는 검색의 편의상 숫자를 제외하고는 전부 제거
         String mobile = form.getMobile();
         if (mobile != null && !mobile.isBlank()) {

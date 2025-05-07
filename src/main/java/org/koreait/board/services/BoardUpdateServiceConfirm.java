@@ -1,21 +1,20 @@
 package org.koreait.board.services;
 
 import lombok.Getter;
+import org.koreait.board.controllers.CreateForm;
 import org.koreait.board.mappers.BoardMapper;
 import org.koreait.global.validators.Validator;
-import org.koreait.member.controllers.JoinForm;
-import org.koreait.member.mappers.MemberMapper;
 
 @Getter
 public class BoardUpdateServiceConfirm {
     private final BoardMapper mapper;
-    private final Validator<JoinForm> validator;
+    private final Validator<CreateForm> validator;
 
-    public BoardUpdateServiceConfirm (MemberMapper mapper, Validator<JoinForm> validator) {
-        this.mapper = (BoardMapper) mapper;
+    public BoardUpdateServiceConfirm (BoardMapper mapper, Validator<CreateForm> validator) {
+        this.mapper = mapper;
         this.validator = validator;
     }
-    public void process(JoinForm form) {
+    public void process(CreateForm form) {
         if (form == null) {
             System.out.println("오류: 제목을 찾을 수 없습니다.");
             throw new NullPointerException("JoinForm 객체가 null입니다.");

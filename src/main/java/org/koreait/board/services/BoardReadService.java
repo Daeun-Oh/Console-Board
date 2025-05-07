@@ -3,6 +3,7 @@ package org.koreait.board.services;
 import org.koreait.board.entities.Board;
 import org.koreait.board.exceptions.BoardNotFoundException;
 import org.koreait.board.mappers.BoardMapper;
+import org.koreait.board.validators.BoardIdValidator;
 import org.koreait.global.paging.SearchForm;
 
 import java.util.List;
@@ -10,10 +11,12 @@ import java.util.List;
 public class BoardReadService {
 
     private final BoardMapper mapper;
+    private final BoardIdValidator validator;
 
 
-    public BoardReadService(BoardMapper mapper) {
+    public BoardReadService(BoardMapper mapper, BoardIdValidator validator) {
         this.mapper = mapper;
+        this.validator = validator;
     }
 
 
@@ -44,6 +47,13 @@ public class BoardReadService {
         search.setLimit(limit);
 
        return mapper.getList(search);
+    }
+
+    /**
+     * 게시글 목록 모두 조회
+     */
+    public List<Board> getAllList() {
+        return mapper.getAllBoards();
     }
 
 }
