@@ -75,7 +75,16 @@ public class BoardReadController extends Controller {
 
     @Override
     public void show() {
-
+        List<Board> boardList = readService.getAllList();
+        for (Board board : boardList) {
+            try {
+                StringBuffer sb = new StringBuffer(5000);
+                sb.append(" [게시물 #" + board.getId() + "] " + board.getTitle()+ "\n");
+                System.out.println(sb);
+            } catch (CommonException e) {
+                printError(e);
+            }
+        }
 
         /*CreateForm form = new CreateForm();
         setPrompt(() -> {
